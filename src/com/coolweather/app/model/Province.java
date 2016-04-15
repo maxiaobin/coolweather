@@ -1,5 +1,7 @@
 package com.coolweather.app.model;
 
+import com.coolweather.app.util.LogUtil;
+
 /**
  * @author 作者 E-mail:
  * @date 创建时间：2016-4-14 上午10:31:38
@@ -8,6 +10,7 @@ package com.coolweather.app.model;
  * @since * @return
  */
 public class Province {
+	
 	private int id;
 	private String provinceName;
 	private String provinceCode;

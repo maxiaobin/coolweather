@@ -1,5 +1,7 @@
 package com.coolweather.app.db;
 
+import com.coolweather.app.util.LogUtil;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;

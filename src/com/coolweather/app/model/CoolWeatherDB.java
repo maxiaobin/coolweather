@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.coolweather.app.db.CoolWeatherOpenHelper;
+import com.coolweather.app.util.LogUtil;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -46,17 +47,25 @@ public class CoolWeatherDB {
 	}
 
 	public List<Province> loadProvinces() {
+		LogUtil.d("MainActivity", "loadProvinces");
 		List<Province> list = new ArrayList<Province>();
 		Cursor cursor = db
 				.query("Province", null, null, null, null, null, null);
 		if (cursor.moveToFirst()) {
 			do {
+				LogUtil.d("MainActivity", "1");
 				Province province = new Province();
+				LogUtil.d("MainActivity", "2");
 				province.setId(cursor.getInt(cursor.getColumnIndex("id")));
+				LogUtil.d("MainActivity", "3");
 				province.setProvinceName(cursor.getString(cursor
-						.getColumnIndex("Province_name")));
+						.getColumnIndex("province_name")));
+				LogUtil.d("MainActivity", "4");
 				province.setProvinceCode(cursor.getString(cursor
-						.getColumnIndex("Province_code")));
+						.getColumnIndex("province_code")));
+				LogUtil.d("MainActivity", "5");
+				list.add(province); 
+				LogUtil.d("MainActivity", "6");
 			} while (cursor.moveToNext());
 		}
 		return list;
@@ -78,8 +87,8 @@ public class CoolWeatherDB {
 			do{
 				City city=new City();
 				city.setId(cursor.getInt(cursor.getColumnIndex("id")));
-				city.setCityName(cursor.getString(cursor.getColumnIndex("City_name")));
-				city.setCityCode(cursor.getString(cursor.getColumnIndex("City_code")));
+				city.setCityName(cursor.getString(cursor.getColumnIndex("city_name")));
+				city.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
 				city.setProvinceId(provinceId);
 				list.add(city);
 			}while(cursor.moveToNext());
@@ -111,6 +120,6 @@ public class CoolWeatherDB {
 			}while(cursor.moveToNext());
 		}
 		return list;
-		
+	
 	} 
 }
